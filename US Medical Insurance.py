@@ -35,12 +35,22 @@ class PatientsInfo:
     # method to calculate the average ages of the patients
     
     def analyze_ages(self):
-        return ("Average Patient Age: " + str(round(np.average(self.patients_ages))))
+        print("Average Patient Age: " + str(round(np.average(self.patients_ages))))
     
     #method that calculates the number of males and females
     
     def analyze_sexes(self):
-        return    
-       
+        uniques, counts = np.unique(self.patients_sexes, return_counts = True)    
+        print(str(uniques[0]) + ':' + str(counts[0]) + '\n' + str(uniques[1]) + ':' + str(counts[1]))
+    
+    #method to find each unique region patients are from
+    
+    def unique_regions(self):
+        count = 1
+        print('The unique regions are: ')
+        for region in np.unique(self.patients_regions):
+            print(str(count)+ '. ' + region)
+            count += 1
+            
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-print(patient_info.analyze_ages())
+patient_info.unique_regions()
