@@ -84,10 +84,10 @@ class PatientsInfo:
     
     # method to find out the average per region
     def average_charges_regions(self):
-        unique = np.unique(self.patients_regions)
-        for region in self.patients_regions:
-            for i in range(0, len(unique)):           
-                if self.patients_regions[region] == unique[i]:
-                    print('Average charges in '+ str(unique[i]) + str(np.average(self.patients_charges)))                      
+        NE_list = self.patients_charges[(self.patients_regions == 'northeast')]
+        NW_list = self.patients_charges[(self.patients_regions == 'northwest')]
+        SE_list = self.patients_charges[(self.patients_regions == 'southeast')]
+        SW_list = self.patients_charges[(self.patients_regions == 'southwest')]
+        print('The average anual charges per region are: \n'+ 'Northeast: ' + str(round(np.average(NE_list),2))+ '\n' + 'Northwest: ' + str(round(np.average(NW_list),2)) + '\n' + 'Southeast: ' + str(round(np.average(SE_list),2)) + '\n' + 'Southwest: ' + str(round(np.average(SW_list),2)))        
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-print(patient_info.average_charges_regions())
+patient_info.average_charges_regions()
