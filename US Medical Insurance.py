@@ -44,7 +44,7 @@ class PatientsInfo:
         uniques, counts = np.unique(self.patients_sexes, return_counts = True)    
         print(str(uniques[0]) + ':' + str(counts[0]) + '\n' + str(uniques[1]) + ':' + str(counts[1]))
     
-    #method to find each unique region patients are from
+    # method to find each unique region patients are from
     
     def unique_regions(self):
         count = 1
@@ -58,7 +58,7 @@ class PatientsInfo:
     def average_charges(self):
         print('Average Yearly Medical Insurance Charges: $' + str(round(np.average(self.patients_charges),2 )))
     
-    #method to find the number of smokers
+    # method to find the number of smokers
     
     def analyze_smokers(self):
         uniques, counts = np.unique(self.patients_smoker_statuses, return_counts = True)    
@@ -69,6 +69,17 @@ class PatientsInfo:
     def analyze_num_children(self):
         print('The maximum number of children is: ' + str(max(self.patients_num_children)) + '\n' + "And the average is: " + str(round(np.average(self.patients_num_children), None)))
         
-                       
+    # method to create dictionary with all patients information
+    def create_dictionary(self):
+        self.patients_dictionary = {}
+        self.patients_dictionary["age"] = [int(age) for age in self.patients_ages]
+        self.patients_dictionary['sex'] = self.patients_sexes
+        self.patients_dictionary["bmi"] = self.patients_bmis
+        self.patients_dictionary['children'] = self.patients_num_children
+        self.patients_dictionary["smoker"] = self.patients_smoker_statuses
+        self.patients_dictionary["regions"] = self.patients_regions
+        self.patients_dictionary["charges"] = self.patients_charges
+        return self.patients_dictionary
+                   
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-patient_info.analyze_num_children()
+print(patient_info.create_dictionary())
