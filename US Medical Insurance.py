@@ -70,6 +70,7 @@ class PatientsInfo:
         print('The maximum number of children is: ' + str(max(self.patients_num_children)) + '\n' + "And the average is: " + str(round(np.average(self.patients_num_children), None)))
         
     # method to create dictionary with all patients information
+    
     def create_dictionary(self):
         self.patients_dictionary = {}
         self.patients_dictionary["age"] = [int(age) for age in self.patients_ages]
@@ -80,6 +81,13 @@ class PatientsInfo:
         self.patients_dictionary["regions"] = self.patients_regions
         self.patients_dictionary["charges"] = self.patients_charges
         return self.patients_dictionary
-                   
+    
+    # method to find out the average per region
+    def average_charges_regions(self):
+        unique = np.unique(self.patients_regions)
+        for region in self.patients_regions:
+            for i in range(0, len(unique)):           
+                if self.patients_regions[region] == unique[i]:
+                    print('Average charges in '+ str(unique[i]) + str(np.average(self.patients_charges)))                      
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-print(patient_info.create_dictionary())
+print(patient_info.average_charges_regions())
