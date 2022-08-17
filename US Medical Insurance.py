@@ -20,6 +20,27 @@ smoker_statuses = ins_df.smoker
 regions = ins_df.region
 insurance_charges = ins_df.charges
 
-print(round(np.average(ages),0))
-       
+class PatientsInfo:
+    # init methot that takes in each list parameter
+    def __init__(self, patients_ages, patients_sexes, patients_bmis, patients_num_children, patients_smoker_statuses,
+                 patients_regions, patients_charges):
+        self.patients_ages = patients_ages
+        self.patients_sexes = patients_sexes
+        self.patients_bmis = patients_bmis
+        self.patients_num_children = patients_num_children
+        self.patients_smoker_statuses = patients_smoker_statuses
+        self.patients_regions = patients_regions
+        self.patients_charges = patients_charges
     
+    # method to calculate the average ages of the patients
+    
+    def analyze_ages(self):
+        return ("Average Patient Age: " + str(round(np.average(self.patients_ages))))
+    
+    #method that calculates the number of males and females
+    
+    def analyze_sexes(self):
+        return    
+       
+patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
+print(patient_info.analyze_ages())
