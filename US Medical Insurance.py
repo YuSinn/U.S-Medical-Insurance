@@ -38,7 +38,7 @@ class PatientsInfo:
     def analyze_ages(self):
         print("Average Patient Age: " + str(round(np.average(self.patients_ages))))
     
-    #method that calculates the number of males and females
+    # method that calculates the number of males and females
     
     def analyze_sexes(self):
         uniques, counts = np.unique(self.patients_sexes, return_counts = True)    
@@ -53,7 +53,7 @@ class PatientsInfo:
             print(str(count)+ '. ' + region)
             count += 1
     
-    #method to find the average charges
+    # method to find the average charges
     
     def average_charges(self):
         print('Average Yearly Medical Insurance Charges: $' + str(round(np.average(self.patients_charges),2 )))
@@ -63,6 +63,12 @@ class PatientsInfo:
     def analyze_smokers(self):
         uniques, counts = np.unique(self.patients_smoker_statuses, return_counts = True)    
         print('The status of patients that smokes or not. \n' + str(uniques[0]) + ': ' + str(counts[0]) + '\n' + str(uniques[1]) + ': ' + str(counts[1]))
-                    
+    
+    # method to find the number of children
+    
+    def analyze_num_children(self):
+        print('The maximum number of children is: ' + str(max(self.patients_num_children)) + '\n' + "And the average is: " + str(round(np.average(self.patients_num_children), None)))
+        
+                       
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-patient_info.analyze_smokers()
+patient_info.analyze_num_children()
