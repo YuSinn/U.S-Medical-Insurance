@@ -21,6 +21,7 @@ regions = ins_df.region
 insurance_charges = ins_df.charges
 
 class PatientsInfo:
+    
     # init methot that takes in each list parameter
     def __init__(self, patients_ages, patients_sexes, patients_bmis, patients_num_children, patients_smoker_statuses,
                  patients_regions, patients_charges):
@@ -61,7 +62,7 @@ class PatientsInfo:
     
     def analyze_smokers(self):
         uniques, counts = np.unique(self.patients_smoker_statuses, return_counts = True)    
-        print(str(uniques[0]) + ':' + str(counts[0]) + '\n' + str(uniques[1]) + ':' + str(counts[1]))
+        print('The status of patients that smokes or not. \n' + str(uniques[0]) + ': ' + str(counts[0]) + '\n' + str(uniques[1]) + ': ' + str(counts[1]))
                     
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
 patient_info.analyze_smokers()
