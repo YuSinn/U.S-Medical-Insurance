@@ -51,6 +51,17 @@ class PatientsInfo:
         for region in np.unique(self.patients_regions):
             print(str(count)+ '. ' + region)
             count += 1
-            
+    
+    #method to find the average charges
+    
+    def average_charges(self):
+        print('Average Yearly Medical Insurance Charges: $' + str(round(np.average(self.patients_charges),2 )))
+    
+    #method to find the number of smokers
+    
+    def analyze_smokers(self):
+        uniques, counts = np.unique(self.patients_smoker_statuses, return_counts = True)    
+        print(str(uniques[0]) + ':' + str(counts[0]) + '\n' + str(uniques[1]) + ':' + str(counts[1]))
+                    
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-patient_info.unique_regions()
+patient_info.analyze_smokers()
