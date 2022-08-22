@@ -88,6 +88,15 @@ class PatientsInfo:
         NW_list = self.patients_charges[(self.patients_regions == 'northwest')]
         SE_list = self.patients_charges[(self.patients_regions == 'southeast')]
         SW_list = self.patients_charges[(self.patients_regions == 'southwest')]
-        print('The average anual charges per region are: \n'+ 'Northeast: ' + str(round(np.average(NE_list),2))+ '\n' + 'Northwest: ' + str(round(np.average(NW_list),2)) + '\n' + 'Southeast: ' + str(round(np.average(SE_list),2)) + '\n' + 'Southwest: ' + str(round(np.average(SW_list),2)))        
+        print('The average anual charges per region are: \n'+ 'Northeast: ' + str(round(np.average(NE_list),2))+ '\n' + 'Northwest: ' + str(round(np.average(NW_list),2)) + '\n' + 'Southeast: ' + str(round(np.average(SE_list),2)) + '\n' + 'Southwest: ' + str(round(np.average(SW_list),2)))
+        
+    # method to find out if the smokers pay more than the no smokers
+    def smokers_no_smokers(self):
+        smokers_charges = self.patients_charges[(self.patients_smoker_statuses == 'yes')]
+        no_smokers_charges = self.patients_charges[(self.patients_smoker_statuses == 'no')]
+        if np.average(smokers_charges) > np.average(no_smokers_charges):
+            print('Smokers has higher insurance charges!')
+        else:
+            print('No smokers has higher insurance charges!')        
 patient_info = PatientsInfo(ages, sexes, bmis, num_children, smoker_statuses, regions, insurance_charges)
-patient_info.average_charges_regions()
+patient_info.smokers_no_smokers()
